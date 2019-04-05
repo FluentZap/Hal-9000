@@ -10,9 +10,6 @@ var halPhrases = [
   "Good afternoon, gentlemen. I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. "
 ]
 
-var c;
-var ctx;
-
 var halPhrase_LastResponce = 0;
 var halPhrase_ResponceCountTo = 0;
 var halPhrase_ResponceCounter = 0;
@@ -32,7 +29,6 @@ var halWorking = false;
 
 var lineFunction;
 var responseFunction;
-var animation;
 
 function convertToComputerSpeak(number) {
   number = number.toString();
@@ -92,36 +88,7 @@ function getRandomNumber(range, forbidden) {
 }
 
 
-
-var ratio = 0;
-function animateLines() {
-  ctx.strokeStyle= "red";
-  ctx.fillStyle= "white";
-  //animate(0);
-
-
-  requestAnimationFrame(function() {
-    ratio+= 0.01;
-    drawLine(0, 0, 100, 100, ratio);
-  });
-}
-
-
-function drawLine(x1, y1, x2, y2, ratio) {
-  //ctx.fillRect(0,0,300,300);
-  ctx.moveTo(x1, y1);
-  x2 = x1 + ratio * (x2 - x1);
-  y2 = y1 + ratio * (y2 - y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
-}
-
-
 $(document).ready(function() {
-  responseFunction = setInterval(newResponce, 100);
-  c = document.getElementById("halCanvas");
-  ctx = c.getContext("2d");
-
 
   $('.hal').hover(function() {
     if (adaptiveFade) {
@@ -172,7 +139,7 @@ $(document).ready(function() {
       } else {
         halWorking = true;
         $('.jumbotron').animate({"margin-left": 300}, 1000, function() {
-          animateLines();
+          animationHandle = requestAnimationFrame(animateLines);
         });
       }
     }
