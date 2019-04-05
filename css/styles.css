@@ -1,0 +1,27 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+}
+
+.jumbotron {
+  height: 400px;
+  width: 175px;
+  background-color: rgb(10, 10, 10);
+  padding: 0px;
+}
+img {
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 125px;
+  height: 125px;
+}
+
+
+.container {
+  padding: 30px;
+}
