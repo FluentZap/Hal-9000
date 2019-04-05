@@ -9,6 +9,8 @@ var countToLetter = 0;
 var displayWord = ""
 var adaptiveFade = false;
 
+var halWorking = false;
+
 var lineFunction;
 
 function convertToComputerSpeak(number) {
@@ -30,7 +32,6 @@ function processLine() {
       currentNumber++;
       console.log(currentNumber, ": ", displayWord);
     } else {
-      currentNumber = 0;
       clearInterval(lineFunction);
     }
   }
@@ -78,16 +79,24 @@ $(document).ready(function () {
     $('.row').clearQueue()
     $('.row').animate({opacity: 1.0}, 1000);
     $('#numberInput').text("");
+    $('#process').addClass("btn-info");
+    $('#process').removeClass("btn-dark");
+    halWorking = false;
   });
 
 
 
 
   $('#process').click(function(event) {
+    if (!halWorking && parseInt($('#numberInput').text()) >= 0) {
       adaptiveFade = true;
       countToNumber = parseInt($('#numberInput').text());
       lineFunction = setInterval(processLine, 50);
       $('#halNumberDisplay').show();
+      $('#process').removeClass("btn-info");
+      $('#process').addClass("btn-dark");
+      halWorking = true;
+    }
   });
 
 });
