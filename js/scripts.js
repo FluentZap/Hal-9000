@@ -29,8 +29,8 @@ function processLine() {
     if (currentNumber <= countToNumber) {
       displayWord = convertToComputerSpeak(currentNumber);
       currentLetter = 0, countToLetter = displayWord.length;
-      currentNumber++;
       console.log(currentNumber, ": ", displayWord);
+      currentNumber++;
     } else {
       clearInterval(lineFunction);
     }
