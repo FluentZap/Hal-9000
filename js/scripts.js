@@ -44,11 +44,17 @@ function processLine() {
   if (currentLetter <= countToLetter) {
     $('#halNumberDisplay').append(displayWord[currentLetter])
     currentLetter++;
+
+    if ($('#halNumberDisplay').text().length > 1500)
+    {
+      $('#halNumberDisplay').text($('#halNumberDisplay').text().substring(1));
+    }
   } else {
     if (currentNumber <= countToNumber) {
       displayWord = convertToComputerSpeak(currentNumber);
       currentLetter = 0, countToLetter = displayWord.length;
       currentNumber++;
+
     } else {
       clearInterval(lineFunction);
     }
@@ -95,12 +101,12 @@ $(document).ready(function() {
   $('.hal').hover(function() {
     if (adaptiveFade) {
       $('.row').clearQueue()
-      $('.row').animate({opacity: 1.0}, 3000)
+      $('.row').animate({opacity: 1.0}, 1500)
     }
   }, function() {
     if (adaptiveFade) {
       $('.row').clearQueue()
-      $('.row').animate({opacity: 0.2}, 3000);
+      $('.row').animate({opacity: 0.2}, 1500);
     }
   });
 

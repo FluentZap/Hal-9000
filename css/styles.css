@@ -12,12 +12,18 @@ h2 {
   text-align: center;
 }
 
-img {
+img#hal9000 {
   margin-top: 25px;
   margin-left: 25px;
   margin-right: 25px;
   width: 125px;
   height: 125px;
+}
+
+img#halName {
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;  
 }
 
 canvas {
