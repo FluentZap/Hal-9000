@@ -1,3 +1,7 @@
+:root {
+  --left-Box-Size: 340px;
+}
+
 body {
   background-color: black;
   color: white;
@@ -11,19 +15,54 @@ h1 {
   display: none;
 }
 
+.btn {
+  margin: 3px;
+}
+
 .jumbotron {
-  height: 400px;
+  height: 520px;
   width: 175px;
   background-color: rgb(10, 10, 10);
   padding: 0px;
 }
 
-.outputBox {
-  height: 400px;
-  width: 400px;
-  margin-left: 20px;
+#numberDisplay {
+  margin: 0px;
+  height: 60px;
+  width: var(--left-Box-Size);
+  margin-top: 10px;
+  margin-right: 20px;
   background-color: rgb(10, 10, 10);
   padding: 12px;
+  color: #d11f1f;
+}
+
+.outputBox {
+  /* height: 300px;
+  width: 400px;
+  margin-right: 20px;
+  background-color: rgb(10, 10, 10);
+  padding: 0px;
+  color: #d11f1f; */
+}
+
+#halResponseBox {
+  margin: 0px;
+  height: 320px;
+  width: var(--left-Box-Size);
+  margin-right: 20px;
+  background-color: rgb(10, 10, 10);
+  padding: 12px;
+  color: #d11f1f;
+}
+
+.inputBox {
+  margin-top: 10px;
+  height: 120px;
+  width: var(--left-Box-Size);
+  margin-right: 20px;
+  background-color: rgb(10, 10, 10);
+  padding: 10px;
   color: #d11f1f;
 }
 
