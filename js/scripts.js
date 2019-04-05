@@ -27,6 +27,8 @@ var adaptiveFade = false;
 
 var halWorking = false;
 
+//var lineBuffer = gl.createBuffer();
+
 var lineFunction;
 var responseFunction;
 
@@ -87,28 +89,6 @@ function getRandomNumber(range, forbidden) {
   }
 }
 
-function render() {
-    const canvas = document.querySelector("#glCanvas");
-    // Initialize the GL context
-    const gl = canvas.getContext("webgl");
-
-    // Only continue if WebGL is available and working
-    if (gl === null) {
-      alert("Unable to initialize WebGL. Your browser or machine may not support it.");
-      return;
-    }
-
-    // Set clear color to black, fully opaque
-    gl.clearColor(1.0, 0.0, 0.0, 1.0);
-    // Clear the color buffer with specified clear color
-    gl.clear(gl.COLOR_BUFFER_BIT);
-
-
-}
-
-
-
-
 $(document).ready(function() {
   responseFunction = setInterval(newResponce, 100);
 
@@ -150,7 +130,6 @@ $(document).ready(function() {
 
   $('#process').click(function(event) {
     if (!halWorking && parseInt($('#numberInput').text()) >= 0) {
-      if (parseInt($('#numberInput').text()) != 9000) {
         adaptiveFade = true;
         countToNumber = parseInt($('#numberInput').text());
         lineFunction = setInterval(processLine, 50);
@@ -158,15 +137,7 @@ $(document).ready(function() {
         $('#process').removeClass("btn-info");
         $('#process').addClass("btn-dark");
         halWorking = true;
-      } else {
-        halWorking = true;
-        $('.inputBox').animate({"margin-top": 100}, 1000)
-        $('#numberDisplay').animate({"margin-top": 100}, 1000)
-        $('.jumbotron').animate({"margin-left": 300}, 1000, function() {
-          render();
-        });
       }
-    }
   });
 
 });
