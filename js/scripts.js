@@ -12,19 +12,15 @@ var halPhrases = [
 
 
 var halPhrase_LastResponce = 0;
-
 var halPhrase_ResponceCountTo = 0;
 var halPhrase_ResponceCounter = 0;
-
 var halPhrase_CurrentLetter = 0;
 var halPhrase_CountToLetter = 0;
 var halPhrase_DisplayWord = ""
-
 var halPhrase_currentLetter = 0;
 
 var currentNumber = 0;
 var countToNumber = 0;
-
 var currentLetter = 0;
 var countToLetter = 0;
 var displayWord = ""
@@ -36,11 +32,11 @@ var lineFunction;
 var responseFunction;
 
 function convertToComputerSpeak(number) {
-    number = number.toString();
-    if (number.includes("3")) return "I'm sorry, Dave. I'm afraid I can't do that. ";
-    if (number.includes("2")) return "Boop! "
-    if (number.includes("1")) return "Beep! "
-    return number + " ";
+  number = number.toString();
+  if (number.includes("3")) return "I'm sorry, Dave. I'm afraid I can't do that. ";
+  if (number.includes("2")) return "Boop! "
+  if (number.includes("1")) return "Beep! "
+  return number + " ";
 }
 
 function processLine() {
@@ -50,7 +46,7 @@ function processLine() {
   } else {
     if (currentNumber <= countToNumber) {
       displayWord = convertToComputerSpeak(currentNumber);
-      currentLetter = 0, countToLetter = displayWord.length;      
+      currentLetter = 0, countToLetter = displayWord.length;
       currentNumber++;
     } else {
       clearInterval(lineFunction);
@@ -85,7 +81,7 @@ function newResponce() {
 function getRandomNumber(range, forbidden) {
   if (range > 1) {
     var number = 0;
-    while(number == forbidden) {
+    while (number == forbidden) {
       number = Math.floor(Math.random() * range);
     }
     return number;
@@ -93,20 +89,22 @@ function getRandomNumber(range, forbidden) {
 }
 
 
-$(document).ready(function () {
-
-  $("#halResponse").fadeIn(1000);
+$(document).ready(function() {
   responseFunction = setInterval(newResponce, 100);
 
   $('.hal').hover(function() {
-    if (adaptiveFade){
+    if (adaptiveFade) {
       $('.row').clearQueue()
-      $('.row').animate({opacity: 1.0}, 3000)
+      $('.row').animate({
+        opacity: 1.0
+      }, 3000)
     }
-    }, function() {
-    if (adaptiveFade){
+  }, function() {
+    if (adaptiveFade) {
       $('.row').clearQueue()
-      $('.row').animate({opacity: 0.2}, 3000);
+      $('.row').animate({
+        opacity: 0.2
+      }, 3000);
     }
   });
 
@@ -127,15 +125,14 @@ $(document).ready(function () {
     });
     adaptiveFade = false;
     $('.row').clearQueue()
-    $('.row').animate({opacity: 1.0}, 1000);
+    $('.row').animate({
+      opacity: 1.0
+    }, 1000);
     $('#numberInput').text("");
     $('#process').addClass("btn-info");
     $('#process').removeClass("btn-dark");
     halWorking = false;
   });
-
-
-
 
   $('#process').click(function(event) {
     if (!halWorking && parseInt($('#numberInput').text()) >= 0) {
