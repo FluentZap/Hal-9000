@@ -50,8 +50,7 @@ function processLine() {
   } else {
     if (currentNumber <= countToNumber) {
       displayWord = convertToComputerSpeak(currentNumber);
-      currentLetter = 0, countToLetter = displayWord.length;
-      console.log(currentNumber, ": ", displayWord);
+      currentLetter = 0, countToLetter = displayWord.length;      
       currentNumber++;
     } else {
       clearInterval(lineFunction);
@@ -64,15 +63,14 @@ function newResponce() {
   if (halPhrase_CurrentLetter <= halPhrase_CountToLetter) {
     $("#halResponse").append(halPhrase_DisplayWord[halPhrase_CurrentLetter])
     halPhrase_CurrentLetter++;
-    console.log(halPhrase_CurrentLetter);
   } else {
-    console.log(halPhrase_ResponceCountTo);
     //if the correct time has passes get a new word
     if (halPhrase_ResponceCounter >= halPhrase_ResponceCountTo) {
-      $("#halResponse").fadeOut(1000, function() {
+      $("#halResponse").fadeOut(2000, function() {
         halPhrase_ResponceCounter = 0;
         $("#halResponse").text("");
-        var phrase = halPhrases[Math.floor(Math.random() * halPhrases.length)]
+        halPhrase_LastResponce = getRandomNumber(halPhrases.length, halPhrase_LastResponce);
+        var phrase = halPhrases[halPhrase_LastResponce]
         halPhrase_DisplayWord = phrase;
         halPhrase_CountToLetter = phrase.length;
         halPhrase_CurrentLetter = 0;
@@ -80,6 +78,17 @@ function newResponce() {
         $("#halResponse").fadeIn(1000);
       });
     } else halPhrase_ResponceCounter++
+  }
+}
+
+
+function getRandomNumber(range, forbidden) {
+  if (range > 1) {
+    var number = 0;
+    while(number == forbidden) {
+      number = Math.floor(Math.random() * range);
+    }
+    return number;
   }
 }
 

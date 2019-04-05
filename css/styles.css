@@ -7,22 +7,21 @@ body {
   color: white;
 }
 
-h1 {
+h2 {
+  margin-top: 10px;
   text-align: center;
 }
 
-#halNumberDisplay {
-  position: fixed;
-  color: #d11f1f;
-  z-index: -10;
+img {
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 125px;
+  height: 125px;
 }
 
-#halResponse {
-  display: none;
-}
-
-.btn {
-  margin: 3px;
+.container {
+  padding: 30px;
 }
 
 .jumbotron {
@@ -30,6 +29,26 @@ h1 {
   width: 175px;
   background-color: rgb(10, 10, 10);
   padding: 0px;
+}
+
+.inputBox {
+  margin-top: 10px;
+  height: 120px;
+  width: var(--left-Box-Size);
+  margin-right: 20px;
+  background-color: rgb(10, 10, 10);
+  padding: 10px;
+  color: #d11f1f;
+}
+
+.btn {
+  margin: 3px;
+}
+
+#halNumberDisplay {
+  position: fixed;
+  color: #d11f1f;
+  z-index: -10;
 }
 
 #numberDisplay {
@@ -43,17 +62,6 @@ h1 {
   color: #d11f1f;
 }
 
-.outputBox {
-  /* height: 300px;
-  width: 400px;
-  margin-right: 20px;
-  background-color: rgb(10, 10, 10);
-  padding: 0px;
-  color: #d11f1f; */
-
-
-}
-
 #halResponseBox {
   margin: 0px;
   height: 320px;
@@ -64,25 +72,6 @@ h1 {
   color: #d11f1f;
 }
 
-.inputBox {
-  margin-top: 10px;
-  height: 120px;
-  width: var(--left-Box-Size);
-  margin-right: 20px;
-  background-color: rgb(10, 10, 10);  
-  padding: 10px;
-  color: #d11f1f;
-}
-
-img {
-  margin-top: 25px;
-  margin-left: 25px;
-  margin-right: 25px;
-  width: 125px;
-  height: 125px;
-}
-
-
-.container {
-  padding: 30px;
+#halResponse {
+  display: none;
 }
