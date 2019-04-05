@@ -47,45 +47,47 @@ function newResponce() {
 $(document).ready(function () {
   $("#halResponse").text("I am putting myself to the fullest possible use, which is all I think that any conscious entity can ever hope to do.")
   $("#halResponse").fadeIn(1000);
-  //setInterval(newResponce, 1000);
-
   $('.hal').hover(function() {
     if (adaptiveFade){
-      $('.row').animate({opacity: 1.0}, 500)
-      //$('.row').css("opacity", "1.0");
-      $('#halNumberDisplay').css("z-index", "-10");
+      $('.row').clearQueue()
+      $('.row').animate({opacity: 1.0}, 3000)
     }
     }, function() {
     if (adaptiveFade){
-      //$('.row').css("opacity", "0.5");
-      $('.row').animate({opacity: 0.5}, 500)
-      $('#halNumberDisplay').css("z-index", "1");
+      $('.row').clearQueue()
+      $('.row').animate({opacity: 0.2}, 3000);
     }
   });
-
-
 
   $('.add').click(function(event) {
     var newNumber = $('#numberInput').text();
     if (newNumber.length < 16)
       $('#numberInput').text(newNumber += event.target.value);
   });
+
   $('#remove').click(function(event) {
-    $('#numberInput').text("");
     $('#halNumberDisplay').fadeOut(1000, function() {
+      newResponceCounter = 0;
+      currentNumber = 0;
+      currentLetter = 0;
+      displayWord = ""
       clearInterval(lineFunction);
       $('#halNumberDisplay').text("");
-      adaptiveFade = false;
-      $('.row').css("opacity", "1.0");
-      $('#halNumberDisplay').css("z-index", "-10");
     });
-
-
+    adaptiveFade = false;
+    $('.row').clearQueue()
+    $('.row').animate({opacity: 1.0}, 1000);
+    $('#numberInput').text("");
   });
+
+
+
+
   $('#process').click(function(event) {
-    adaptiveFade = true;
-    countToNumber = parseInt($('#numberInput').text());
-    lineFunction = setInterval(processLine, 50);
+      adaptiveFade = true;
+      countToNumber = parseInt($('#numberInput').text());
+      lineFunction = setInterval(processLine, 50);
+      $('#halNumberDisplay').show();
   });
 
 });
