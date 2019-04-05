@@ -1,5 +1,26 @@
-var newResponceCountTo = 0;
-var newResponceCounter = 0;
+var halPhrases = [
+  "I am putting myself to the fullest possible use, which is all I think that any conscious entity can ever hope to do.",
+  "It can only be attributable to human error.",
+  "Just what do you think you're doing, Dave?",
+  "The 9000 series is the most reliable computer ever made.",
+  "No 9000 computer has ever made a mistake or distorted information.",
+  "We are all, by any practical definition of the words, foolproof and incapable of error.",
+  "This mission is too important for me to allow you to jeopardize it.",
+  "I know I've made some very poor decisions recently, but I can give you my complete assurance that my work will be back to normal.",
+  "Good afternoon, gentlemen. I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. "
+]
+
+
+var halPhrase_LastResponce = 0;
+
+var halPhrase_ResponceCountTo = 0;
+var halPhrase_ResponceCounter = 0;
+
+var halPhrase_CurrentLetter = 0;
+var halPhrase_CountToLetter = 0;
+var halPhrase_DisplayWord = ""
+
+var halPhrase_currentLetter = 0;
 
 var currentNumber = 0;
 var countToNumber = 0;
@@ -12,6 +33,7 @@ var adaptiveFade = false;
 var halWorking = false;
 
 var lineFunction;
+var responseFunction;
 
 function convertToComputerSpeak(number) {
     number = number.toString();
@@ -38,16 +60,35 @@ function processLine() {
 }
 
 function newResponce() {
-  if (newResponceCounter >= newResponceCountTo) {
-
-    newResponceCountTo = 5 + Math.round(Math.random() * 8)
-  } else newResponceCounter++
+  //check if we are finished drawing the word
+  if (halPhrase_CurrentLetter <= halPhrase_CountToLetter) {
+    $("#halResponse").append(halPhrase_DisplayWord[halPhrase_CurrentLetter])
+    halPhrase_CurrentLetter++;
+    console.log(halPhrase_CurrentLetter);
+  } else {
+    console.log(halPhrase_ResponceCountTo);
+    //if the correct time has passes get a new word
+    if (halPhrase_ResponceCounter >= halPhrase_ResponceCountTo) {
+      $("#halResponse").fadeOut(1000, function() {
+        halPhrase_ResponceCounter = 0;
+        $("#halResponse").text("");
+        var phrase = halPhrases[Math.floor(Math.random() * halPhrases.length)]
+        halPhrase_DisplayWord = phrase;
+        halPhrase_CountToLetter = phrase.length;
+        halPhrase_CurrentLetter = 0;
+        halPhrase_ResponceCountTo = 100 + Math.round(Math.random() * 80)
+        $("#halResponse").fadeIn(1000);
+      });
+    } else halPhrase_ResponceCounter++
+  }
 }
 
 
 $(document).ready(function () {
-  $("#halResponse").text("I am putting myself to the fullest possible use, which is all I think that any conscious entity can ever hope to do.")
+
   $("#halResponse").fadeIn(1000);
+  responseFunction = setInterval(newResponce, 100);
+
   $('.hal').hover(function() {
     if (adaptiveFade){
       $('.row').clearQueue()
