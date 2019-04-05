@@ -7,12 +7,26 @@ h1 {
   text-align: center;
 }
 
+#halResponse {
+  display: none;
+}
+
 .jumbotron {
   height: 400px;
   width: 175px;
   background-color: rgb(10, 10, 10);
   padding: 0px;
 }
+
+.outputBox {
+  height: 400px;
+  width: 400px;
+  margin-left: 20px;
+  background-color: rgb(10, 10, 10);
+  padding: 20px;
+  color: #d11f1f;
+}
+
 img {
   margin-top: 25px;
   margin-left: 25px;
