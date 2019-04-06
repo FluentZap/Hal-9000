@@ -27,8 +27,6 @@ var adaptiveFade = false;
 
 var halWorking = false;
 
-//var lineBuffer = gl.createBuffer();
-
 var lineFunction;
 var responseFunction;
 
@@ -44,17 +42,15 @@ function processLine() {
   if (currentLetter <= countToLetter) {
     $('#halNumberDisplay').append(displayWord[currentLetter])
     currentLetter++;
-
-    if ($('#halNumberDisplay').text().length > 1500)
+    if ($('#halNumberDisplay').text().length > 800)
     {
-      $('#halNumberDisplay').text($('#halNumberDisplay').text().substring(1));
+      $('#halNumberDisplay').text($('#halNumberDisplay').text().substring(100));
     }
   } else {
     if (currentNumber <= countToNumber) {
       displayWord = convertToComputerSpeak(currentNumber);
       currentLetter = 0, countToLetter = displayWord.length;
       currentNumber++;
-
     } else {
       clearInterval(lineFunction);
     }
