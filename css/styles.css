@@ -23,7 +23,7 @@ img#hal9000 {
 img#halName {
   margin-top: 25px;
   margin-left: 25px;
-  margin-right: 25px;  
+  margin-right: 25px;
 }
 
 canvas {
@@ -57,6 +57,10 @@ canvas {
 
 .btn {
   margin: 3px;
+}
+
+.btn#remove {
+  margin-left: 0px;
 }
 
 #halNumberDisplay {
