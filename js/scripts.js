@@ -80,7 +80,6 @@ function newResponce() {
   }
 }
 
-
 function getRandomNumber(range, forbidden) {
   if (range > 1) {
     var number = 0;
